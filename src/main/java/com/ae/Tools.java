@@ -11,8 +11,7 @@ import org.apache.jena.util.FileManager;
 public class Tools {
 
 	public static ResultSet executeSelectQuery(String queryS) {
-		FileManager.get().addLocatorClassLoader(TourismServerApplication.class.getClassLoader());
-		Model model = FileManager.get().loadModel(AppConf.PATH_ONTOLOGY);
+		Model model = getModel();
 		Query query = QueryFactory.create(queryS);
 		QueryExecution qexe = QueryExecutionFactory.create(query, model);
 		ResultSet result = qexe.execSelect();
@@ -20,12 +19,17 @@ public class Tools {
 	}
 	
 	public static Model executeConstructQuery(String queryS) {
-		FileManager.get().addLocatorClassLoader(TourismServerApplication.class.getClassLoader());
-		Model model = FileManager.get().loadModel(AppConf.PATH_ONTOLOGY);
+		Model model = getModel();
 		Query query = QueryFactory.create(queryS);
 		QueryExecution qexe = QueryExecutionFactory.create(query, model);
 		Model constructModel = qexe.execConstruct();
 		return constructModel;	
+	}
+	
+	public static Model getModel() {
+		FileManager.get().addLocatorClassLoader(TourismServerApplication.class.getClassLoader());
+		Model model = FileManager.get().loadModel(AppConf.PATH_ONTOLOGY);
+		return model;
 	}
 	
 

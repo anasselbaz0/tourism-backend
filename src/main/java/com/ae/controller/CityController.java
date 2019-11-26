@@ -23,6 +23,7 @@ public class CityController {
 	public List<City> getAllCities() {
 		return cityBusiness.getAllCities();
 	}
+
 	
 	@PostMapping("/cities")
 	public City addCity(City City) {

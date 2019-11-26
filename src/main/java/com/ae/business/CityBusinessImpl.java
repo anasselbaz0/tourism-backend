@@ -19,7 +19,7 @@ public class CityBusinessImpl implements CityBusiness {
 
 	@Override
 	public City saveOrUpdateCity(City city) {
-		cityRepository.save(city);
+		//cityRepository.save(city);
 		return cityDAO.saveOrUpdateCity(city);
 	}
 
