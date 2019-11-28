@@ -35,7 +35,6 @@ public class Country implements Serializable{
 	
 	public Country() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Country(Integer id, String name, City capital, Integer area, String currency, String flag, String language,

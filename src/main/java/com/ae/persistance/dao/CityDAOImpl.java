@@ -67,12 +67,12 @@ public class CityDAOImpl implements CityDAO {
 		Property p_zip 			= model.getProperty(AppConf.URI_ONTOLOGY + AppConf.PROPRETY_ZIPCODE);
 		Property p_site 		= model.getProperty(AppConf.URI_ONTOLOGY + AppConf.PROPRETY_WEBSITE);
 		String sURI = AppConf.URI_ONTOLOGY + city.getName(); 
-		addStatement(sURI, p_name, city.getName());
-		addStatement(sURI, p_population, String.valueOf(city.getPopulation()));
-		addStatement(sURI, p_sec, String.valueOf(city.getSecurity_classification()));
-		addStatement(sURI, p_tour, String.valueOf(city.getTourism_classification()));
-		addStatement(sURI, p_zip, String.valueOf(city.getZip_code()));
-		addStatement(sURI, p_site, city.getWeb_site());
+		Tools.addStatement(sURI, p_name, city.getName());
+		Tools.addStatement(sURI, p_population, String.valueOf(city.getPopulation()));
+		Tools.addStatement(sURI, p_sec, String.valueOf(city.getSecurity_classification()));
+		Tools.addStatement(sURI, p_tour, String.valueOf(city.getTourism_classification()));
+		Tools.addStatement(sURI, p_zip, String.valueOf(city.getZip_code()));
+		Tools.addStatement(sURI, p_site, city.getWeb_site());
 		return city;
 	}
 
@@ -120,14 +120,6 @@ public class CityDAOImpl implements CityDAO {
 			}
 		}
 		return listCities;
-	}
-	
-	 private void addStatement(String s, Property p, String o){
-		 Model model = Tools.getModel();
-		 Resource subject = model.createResource(s);
-		 RDFNode object = model.createResource(o);
-		 Statement stmt = model.createStatement(subject, p, object);
-		 model.add(stmt);
 	}
 
 }

@@ -18,6 +18,14 @@ public class AppConf implements WebMvcConfigurer {
 	public static String PROPRETY_TOURISM_C = "tourism_classification";
 	public static String PROPRETY_ZIPCODE = "ZIP_code";
 	public static String PROPRETY_WEBSITE = "web_site";
+	public static String PROPRETY_HAZ_CAPITAL = "hasCapital";
+	public static String PROPRETY_AREA = "area";
+	public static String PROPRETY_CURRENCY = "currency";
+	public static String PROPRETY_FLAG = "flag";
+	public static String PROPRETY_LANGUAGE = "language";
+	public static String PROPRETY_TIME_ZONE = "time_zone";
+	public static String PROPRETY_MOTTO = "motto";
+	public static String PROPRETY_RELIGION = "religion";
 	
     @Override
     public void addCorsMappings(CorsRegistry registry) {

@@ -6,6 +6,10 @@ import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.query.QueryFactory;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.RDFNode;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.util.FileManager;
 
 public class Tools {
@@ -32,6 +36,12 @@ public class Tools {
 		return model;
 	}
 	
-
+	public static void addStatement(String s, Property p, String o){
+		 Model model = getModel();
+		 Resource subject = model.createResource(s);
+		 RDFNode object = model.createResource(o);
+		 Statement stmt = model.createStatement(subject, p, object);
+		 model.add(stmt);
+	}
 	
 }
