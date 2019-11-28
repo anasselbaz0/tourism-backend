@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.jena.graph.Node;
+import org.apache.jena.query.ResultSet;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.RDFNode;
@@ -25,7 +26,7 @@ public class CityDAOImpl implements CityDAO {
 		String queryS = 	
 				"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>"
 				+ "PREFIX tont: <http://localhost:80/tourism-ontology/1.0#> "
-				//"SELECT ?name" +
+//				+ "SELECT ?city"
 				+ "CONSTRUCT {"
 				+ "		?city tont:name ?name . "
 				+ "		?city tont:population ?population . "
@@ -36,6 +37,7 @@ public class CityDAOImpl implements CityDAO {
 				+ "}"
 				+ "WHERE { "
 				+ "		?counrty tont:contains ?city . "
+//				+ "		?city rdf:type tont:City . "
 				+ "		?city tont:name ?name . "
 				+ "		?city tont:population ?population . "
 				+ "		?city tont:security_classification ?sec . "
@@ -46,6 +48,7 @@ public class CityDAOImpl implements CityDAO {
 		Model model = Tools.executeConstructQuery(queryS);
 		//System.out.println());
 		//ResultSet resultSet = Tools.executeSelectQuery(queryS);
+		//Model model = resultSet.getResourceModel();
 		List<City> listCities = this.model2list(model);
 //		for (City city : listCities) {
 //			cityRepo.save(city);
