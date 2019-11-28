@@ -21,12 +21,12 @@ public class CountryController {
 	
 	@GetMapping("/countries")
 	public List<Country> getAllcountries() {
-		return countryBusiness.getAllcountries();
+		return countryBusiness.getAllCountries();
 	}
 
 	@PostMapping("/countries")
 	public Country addcountry(Country country) {
-		return countryBusiness.saveOrUpdatecountry(country);
+		return countryBusiness.saveOrUpdateCountry(country);
 	}
 	
 	@GetMapping("/countries/{countryId}")
@@ -36,13 +36,13 @@ public class CountryController {
 	
 	@PutMapping("/countries/{countryId}")
 	public Country updatecountry(@PathVariable("countryId") int id) {
-		country t = countryBusiness.getcountryById(id);
-		return countryBusiness.saveOrUpdatecountry(t);
+		Country t = countryBusiness.getCountryById(id);
+		return countryBusiness.saveOrUpdateCountry(t);
 	}
 	
 	@DeleteMapping("/countries/{countryId}")
 	public void deletecountry(@PathVariable("countryId") int id) {
-		countryBusiness.deletecountry(id);
+		countryBusiness.deleteCountry(id);
 	}
 	
 }

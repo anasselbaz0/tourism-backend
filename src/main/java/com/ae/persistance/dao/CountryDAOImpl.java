@@ -4,11 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.jena.graph.Node;
-import org.apache.jena.query.ResultSet;
 import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.Property;
-import org.apache.jena.rdf.model.RDFNode;
-import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.StmtIterator;
 
@@ -16,43 +12,43 @@ import com.ae.AppConf;
 import com.ae.Tools;
 import com.ae.persistance.entity.City;
 import com.ae.persistance.entity.Country;
-import com.ae.persistance.repository.CityRepository;
 
 public class CountryDAOImpl implements CountryDAO {
 
 	@Override
 	public List<Country> getAllCountries() {
+		System.out.println(3);
 		String queryS = 	
-				"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>"
-				+ "PREFIX tont: <http://localhost:80/tourism-ontology/1.0#> "
-				+ "CONSTRUCT {"
-				+ "		?country tont:name ?name . "
-				+ "		?country tont:capital ?capital . "
-				+ "		?country tont:security_classification ?sec . "
-				+ "		?country tont:tourism_classification ?tour . "
-				+ "		?country tont:area ?area . "
-				+ "		?country tont:currency ?currency . "
-				+ "		?country tont:flag ?flag . "
-				+ "		?country tont:language ?language . "
-				+ "		?country tont:population ?population . "
-				+ "		?country tont:motto ?motto . "
-				+ "		?country tont:religion ?religion . "
-				+ "		?country tont:time_zone ?timeZone . "
-				+ "}"
-				+ "WHERE { "
-				+ "		?country tont:name ?name . "
-				+ "		?country tont:capital ?capital . "
-				+ "		?country tont:security_classification ?sec . "
-				+ "		?country tont:tourism_classification ?tour . "
-				+ "		?country tont:area ?area . "
-				+ "		?country tont:currency ?currency . "
-				+ "		?country tont:flag ?flag . "
-				+ "		?country tont:language ?language . "
-				+ "		?country tont:population ?population . "
-				+ "		?country tont:motto ?motto . "
-				+ "		?country tont:religion ?religion . "
-				+ "		?country tont:time_zone ?timeZone . "
-				+ "}";
+				"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" + 
+				"PREFIX tont: <http://localhost:80/tourism-ontology/1.0#> \n" + 
+				"CONSTRUCT {\n" + 
+				"		?country tont:name ?name . \n" + 
+				"		?country tont:hasCapital ?capital . \n" + 
+				"		?country tont:security_classification ?sec . \n" + 
+				"		?country tont:tourism_classification ?tour . \n" + 
+				"		?country tont:area ?area . \n" + 
+				"		?country tont:currency ?currency . \n" + 
+				"		?country tont:flag ?flag . \n" + 
+				"		?country tont:language ?language . \n" + 
+				"		?country tont:population ?population . \n" + 
+				"		?country tont:motto ?motto . \n" + 
+				"		?country tont:religion ?religion . \n" + 
+				"		?country tont:time_zone ?timeZone . \n" + 
+				"}\n" + 
+				"WHERE { \n" + 
+				"		?country tont:name ?name . \n" + 
+				"		?country tont:hasCapital ?capital . \n" + 
+				"		?country tont:security_classification ?sec . \n" + 
+				"		?country tont:tourism_classification ?tour . \n" + 
+				"		?country tont:area ?area . \n" + 
+				"		?country tont:currency ?currency . \n" + 
+				"		?country tont:flag ?flag . \n" + 
+				"		?country tont:language ?language . \n" + 
+				"		?country tont:population ?population . \n" + 
+				"		?country tont:motto ?motto . \n" + 
+				"		?country tont:religion ?religion . \n" + 
+				"		?country tont:time_zone ?timeZone . \n" + 
+				"}";
 		Model model = Tools.executeConstructQuery(queryS);
 		List<Country> listCountries = this.model2list(model);
 //		for (City city : listCities) {
@@ -102,6 +98,7 @@ public class CountryDAOImpl implements CountryDAO {
 			Statement st = result.next();
 			Node predicate = st.asTriple().getPredicate();
 			Node object = st.asTriple().getObject();
+			System.out.println("---->>  " + predicate.toString() + "  " + object.toString());	
 			if(predicate.toString().equals(AppConf.URI_ONTOLOGY + AppConf.PROPRETY_NAME)) 		{name=(String) object.getLiteralValue(); count++;}
 			if(predicate.toString().equals(AppConf.URI_ONTOLOGY + AppConf.PROPRETY_POPULATION)) {population=(Integer) object.getLiteralValue(); count++;}
 			if(predicate.toString().equals(AppConf.URI_ONTOLOGY + AppConf.PROPRETY_SECURITY_C)) {sec=(Integer) object.getLiteralValue(); count++;}
@@ -114,7 +111,7 @@ public class CountryDAOImpl implements CountryDAO {
 			if(predicate.toString().equals(AppConf.URI_ONTOLOGY + AppConf.PROPRETY_MOTTO)) 		{motto=(String) object.getLiteralValue(); count++;}
 			if(predicate.toString().equals(AppConf.URI_ONTOLOGY + AppConf.PROPRETY_RELIGION)) 	{religion=(String) object.getLiteralValue(); count++;}
 			if(predicate.toString().equals(AppConf.URI_ONTOLOGY + AppConf.PROPRETY_TIME_ZONE)) 	{timeZone=(String) object.getLiteralValue(); count++;}
-			if(count == 12) {
+			if(count == 11) {
 				listCountries.add(new Country(name,capital,area,currency,flag,language,motto,population,religion,timeZone,sec,tou));
 				count = 0;
 			}

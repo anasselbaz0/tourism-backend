@@ -1,0 +1,31 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX tont: <http://localhost:80/tourism-ontology/1.0#> 
+CONSTRUCT {
+		?country tont:name ?name . 
+		?country tont:hasCapital ?capital . 
+		?country tont:security_classification ?sec . 
+		?country tont:tourism_classification ?tour . 
+		?country tont:area ?area . 
+		?country tont:currency ?currency . 
+		?country tont:flag ?flag . 
+		?country tont:language ?language . 
+		?country tont:population ?population . 
+		?country tont:motto ?motto . 
+		?country tont:religion ?religion . 
+		?country tont:time_zone ?timeZone . 
+}
+WHERE { 
+		?country tont:name ?name . 
+		?country tont:capital ?capital . 
+		?country tont:security_classification ?sec . 
+		?country tont:tourism_classification ?tour . 
+		?country tont:area ?area . 
+		?country tont:currency ?currency . 
+		?country tont:flag ?flag . 
+		?country tont:language ?language . 
+		?country tont:population ?population . 
+		?country tont:motto ?motto . 
+		?country tont:religion ?religion . 
+		?country tont:time_zone ?timeZone . 
+}
+
