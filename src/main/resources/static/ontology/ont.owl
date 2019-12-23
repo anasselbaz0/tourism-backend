@@ -306,6 +306,18 @@
 
     <!-- Cities -->
 
+    <!-- http://localhost:80/tourism-ontology/1.0#Errachidia -->
+    <owl:NamedIndividual rdf:about="http://localhost:80/tourism-ontology/1.0#Errachidia">
+        <rdf:type rdf:resource="http://localhost:80/tourism-ontology/1.0#City"/>
+        <ZIP_code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">25000</ZIP_code>
+        <location rdf:datatype="http://www.w3.org/2001/XMLSchema#string">45678</location>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Errachidia</name>
+        <population rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">277827</population>
+        <security_classification rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</security_classification>
+        <tourism_classification rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</tourism_classification>
+        <web_site rdf:datatype="http://www.w3.org/2001/XMLSchema#string">www.Errachidia.ma</web_site>
+    </owl:NamedIndividual>
+    
     <!-- http://localhost:80/tourism-ontology/1.0#Rabat -->
     <owl:NamedIndividual rdf:about="http://localhost:80/tourism-ontology/1.0#Rabat">
         <rdf:type rdf:resource="http://localhost:80/tourism-ontology/1.0#City"/>
